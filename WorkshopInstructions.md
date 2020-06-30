@@ -3,7 +3,6 @@
 ## ADF introduction & data quality lab.
 ## Lab 1
 
-iulia
 
 * You can create the following resources in your sandbox resource group.
 * Deploy everything in the same region, that is also closest to you geographically (example: westerneurope)
@@ -105,7 +104,6 @@ With the following columns and expressions:
    
 ![](show one image with all of them)
 
-THIS IS MY EDIT
 
 
 
