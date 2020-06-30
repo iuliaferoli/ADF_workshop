@@ -8,7 +8,7 @@
 * Deploy everything in the same region, that is also closest to you geographically (example: westerneurope)
 * Recommended to add your initials or another distinctive element to the naming of your resources if multiple people use the same resource group
 
-In this lab you will:
+## Tasks Summary
 
 A. Set up Azure environemnt
 
@@ -18,27 +18,26 @@ C. Create a pipeline with data transformation activities
 
 D. Write your transformed data back to your data lake
 
-### A.1 Create and populate data lake
+## A.1 Create and populate data lake
 
 1. Create a data lake (storage account with hierarchical namespace enabled) [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createstorage.PNG?raw=true)
 
 2. Create two containers: `input` and `output` (where you will later write to through an ADF pipeline) [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-blob-container)
-
-![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createcontainers.png?raw=true)    
-
 3. Download the rotten tomatoes dataset from [the data folder](https://github.com/iuliaferoli/ADF_workshop/blob/master/data/all_movie.csv)
 4. Upload it to the `input` folder of the data lake (with an easy name)
     
-### A.2 Create Azure Data Factory instance in the same resource group
-1. Create an ADF instance [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createcontainers.png?raw=true)  
+
+## A.2 Create Azure Data Factory instance in the same resource group
+1. Create an ADF instance. ([documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory))
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createadf.PNG?raw=true)
 
 2. Open the ADF Author & Monitor page.
 
-### B. Connect to the data
+## B. Connect to the data
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createinadf.png?raw=true)
 
@@ -52,34 +51,46 @@ D. Write your transformed data back to your data lake
     * choose the file you uploaded in the storage account and enable first row as header
     
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataset.PNG?raw=true)
-You know have your input dataset.
+You now have your input dataset.
 
-### C. Create and run pipeline & dataflow
+### C.1 Create pipeline
 
-9. Go on the "Author" tab on the left of the screen and create a new Pipeline
-10. Create a Data Flow activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
+1. Go on the `Author` tab on the left of the screen and create a new Pipeline
+2. Create a "Data Flow" activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
+3. Choose "Create new data flow" in the UI pop-up; and select Mapping Data Flow
+
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataflow.png?raw=true)
 
 
+### C.2 Create data flow
 
-11. Choose create new data flow in the UI pop-up; and select Mapping Data Flow
-12. Click on `Add Source` step at the beginning of the data flow.
+1. Click on `Add Source` step at the beginning of the data flow.
 * Name it
 * Select Dataset as Source type
 * Choose the dataset you created in B
 
-![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataflow.png?raw=true)
+#### Create the new steps in the data flow by clicking on the `+` at the bottom right of each step. 
 
-Create new steps in the data flow by clicking on the `+` at the bottom right of each step.
-Create the following transformatins:
-1. `Select` step to drop the `Rating` column and rename `Rotton Tomato` to `Rotten Tomato`
-2. `Filter` step to only keep movies released after 1950. In the Filter box use the formula ` toInteger(year) > 1950`
-3. `Derived column` step to split the current `genres` column to only the first named genre. 
-    * Give the new derived column a name like `PrimaryGenre` and use this formula `iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)`
+2. `Select` step to drop the `Rating` column and rename `Rotton Tomato` to `Rotten Tomato`
+3. `Filter` step to only keep movies released after 1950. In the Filter box use the formula 
+```
+toInteger(year) > 1950
+```
+4. `Derived column` step to split the current `genres` column to only the first named genre. 
+* Give the new derived column a name like `PrimaryGenre` and use this formula 
 
-4. `Sink` step at the end of your data flow, and within the settings **create a new dataset** (data lake gen 2, csv, same linked service as before) that connects to the **output container** you created in section A. 
+```
+iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
+```
 
-5. Select ```Publish All``` to commit all the changes you made, 
-6. Run your pipeline by selecting ```Trigger Now```
+5. `Sink` step at the end of your data flow, and within the settings:
+* **create a new dataset** with properties: 
+* data lake gen 2, csv, same linked service as before that connects to the **output container** you created in section A. 
+
+### C.3 Publish & Run
+
+1. Select ```Publish All``` to commit all the changes you made, 
+2. Run your pipeline by selecting ```Trigger Now```
 
 ![](add the link to the trigger now image here)
     
