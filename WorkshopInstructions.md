@@ -82,7 +82,7 @@ Create the following transformatins:
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/triggernow.png?raw=true)
     
 ### D. Create a Data Profile with Statistics
-1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add a ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
+1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add an ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/summarystatistics.png?raw=true)
 
@@ -111,6 +111,11 @@ Column Pattern 2 - Each column that matches ```type=='string'```
   | Column  | Expression |
    | ------------- | ------------- |
    | $$+'-MaxLength'  | max(length($$))  |
+   
+Add another ```Sink``` as a last step to this branch, and write the data to a ```New Dataset``` (also a CSV file) in the same Data Lake.
+
+### E. Visualize your Data Profile in Power BI
+
    
 
 
