@@ -25,7 +25,7 @@ D. Write your transformed data back to your data lake
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createstorage.PNG?raw=true)
 
 2. Create two containers: `input` and `output` (where you will later write to through an ADF pipeline) [(see documentation)](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-blob-container)
-3. Download the rotten tomatoes dataset from [the data folder](https://github.com/iuliaferoli/ADF_workshop/blob/master/data/all_movie.csv)
+3. Download the Movies dataset from [the data folder](https://github.com/iuliaferoli/ADF_workshop/blob/master/data/all_movie.csv)
 4. Upload it to the `input` folder of the data lake (with an easy name)
     
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createcontainers.png?raw=true)  
@@ -104,8 +104,8 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 
 ### C.3 Publish & Run
 
-1. Select ```Publish All``` to commit all the changes you made, 
-2. Run your pipeline by selecting ```Trigger Now```
+1. Select `Publish All` to commit all the changes you made, 
+2. Run your pipeline by selecting `Trigger Now`
 
 
 
@@ -115,14 +115,14 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 
     
 ### D. Create a Data Profile with Statistics
-1. Create a  ```New Branch``` from the last step in the data flow you made before the sink
+1. Create a  `New Branch` from the last step in the data flow you made before the sink
 
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/newbranch.png?raw=true)
 
 
 2. Add an `Derived Column` step to convert the Year column to integer (to get the best of the statistics analysis later)
-3. Add an ```Aggregate``` step. Within the settings,
+3. Add an `Aggregate` step. Within the settings,
 
 
 
@@ -130,7 +130,7 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 
 
 
-4. Select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
+4. Select the `Aggregates` option instead of Group By, press the `+` button and then `Add Column Pattern`. Fill in the remaining fields as follows for three column patterns in total:
 
 
 
@@ -140,7 +140,7 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 
 You can also copy the values from here:
 
-First Column Pattern - Each column that matches ```true()```
+First Column Pattern - Each column that matches `true()`
 With the following columns and expressions below:
 
   | Column  | Expression |
@@ -148,7 +148,7 @@ With the following columns and expressions below:
   | $$+'-NotNull'  | countIf(!isNull($$))  |
   | $$+'-Null'   | countIf(isNull($$)) | 
 
-Second Column Pattern - Each column that matches ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
+Second Column Pattern - Each column that matches `type=='double'||type=='integer'||type=='short'||type=='decimal'`
 
   | Column  | Expression |
    | ------------- | ------------- |
@@ -158,7 +158,7 @@ Second Column Pattern - Each column that matches ```type=='double'||type=='integ
    | $$+'-average'   | round(avg($$),2) |    
    | $$+'-variance'   | round(variance($$),2) |
     
-Third Column Pattern - Each column that matches ```type=='string'```
+Third Column Pattern - Each column that matches `type=='string'`
       
   | Column  | Expression |
    | ------------- | ------------- |
@@ -167,7 +167,7 @@ Third Column Pattern - Each column that matches ```type=='string'```
 
 * If you have the data flow debug enabled you can directly see the generated statistics under `Data preview`   
 
-5. Add another ```Sink``` as a last step to this branch, and write the data to a ```New Dataset``` (also a CSV file) in the same Data Lake.
+5. Add another `Sink` as a last step to this branch, and write the data to a `New Dataset` (also a CSV file) in the same Data Lake.
 
 
 
