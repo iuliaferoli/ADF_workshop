@@ -99,7 +99,7 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
     
 ### D. Create a Data Profile with Statistics
 1. Create a  ```New Branch``` from the last step in the data flow you made before the sink
-2. Ass an `Derived Column` step to convert the Year column to integer (to get the best of the statistics analysis later)
+2. Add an `Derived Column` step to convert the Year column to integer (to get the best of the statistics analysis later)
 3. Add an ```Aggregate``` step. Within the settings,
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/secondbranch.PNG?raw=true)
