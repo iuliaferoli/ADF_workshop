@@ -7,8 +7,6 @@
 * Deploy everything in the same region, that is also closest to you geographically (example: westerneurope)
 * Recommended to add your initials or another distinctive element to the naming of your resources if multiple people use the same resource group
 
-this code 
-
 In this lab you will:
 
 A. Set up Azure environemnt
@@ -67,7 +65,7 @@ You know have your input dataset.
 
 From this Data Flow screen you can now create extra steps with the ```+``` button at the bottom right of each activity shape. The overview of possible transformations is found [here](https://docs.microsoft.com/en-us/azure/data-factory/data-flow-transformation-overview)
 
-13. Follow the instructions from Task 3 in this [tutorial](https://github.com/microsoft/ignite-learning-paths-training-data/tree/main/data30/demos#exercise-1-transforming-data-with-mapping-data-flow) to create a couple of data transformations. You don't have to complete all of them. 
+13. Follow the instructions from Task 3 in this [tutorial](https://github.com/microsoft/ignite-learning-paths-training-data/tree/main/data30/demos#task-3-using-mapping-data-flow-transformation) to create a couple of data transformations. You don't have to complete all of them. 
     
 14. Add a ```sink``` at the end of your data flow, and within the settings **add a new .CSV dataset** that connects to the **output container** you created in section A. 
 
