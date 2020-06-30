@@ -2,7 +2,12 @@
 ## ADF introduction & data quality lab.
 ## Lab 1
 
-You can create the following resources in your sandbox resource group. Deploy everything in the same region, that is also closest to you geographically (example: westerneurope)
+* You can create the following resources in your sandbox resource group.
+* Deploy everything in the same region, that is also closest to you geographically (example: westerneurope)
+* Recommended to add your initials or another distinctive element to the naming of your resources if multiple people use the same resource group
+
+this code 
+
 In this lab you will:
 
 A. Set up Azure environemnt
@@ -16,23 +21,25 @@ D. Write your transformed data back to your data lake
 ### A.1 Create and populate data lake
 
 1. Create a data lake (storage account with hierarchical namespace enabled) [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)
-2. Create two containers: "input" and "output" (where you will later write to through an ADF pipeline) [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-blob-container)
+2. Create two containers: `input` and `output` (where you will later write to through an ADF pipeline) [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-blob-container)
 3. Download the rotten tomatoes dataset from [kaggle](https://www.kaggle.com/ayushkalla1/rotten-tomatoes-movie-database/data?select=all_movie.csv)
-4. Upload the csv to the input folder of the data lake (with an easy name)
+4. Unzip the csv and upload it to the input folder of the data lake (with an easy name)
     
 ### A.2 Create Azure Data Factory instance in the same resource group
-5. Create an ADF instance [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-6. Open the ADF Author & Monitor page and go into the "Author" tab (pencil on the left of the page)
+1. Create an ADF instance [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
+2. Open the ADF Author & Monitor page.
 
 ### B. Connect to the data
-7. Create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
-8. Create a dataset, 
-    1. type will be Data Lake Gen 2 (as the storage account you made)
+3. From the `Manage` tab, create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
+    1. Data store type will be Data Lake Gen 2 (as the storage account you made)
+    2. Select your subscription and storage account
+4. From the `Author` tab create a dataset, 
+    1. Data store type will be Data Lake Gen 2 (as the storage account you made)
     2. format will be CSV (Delimited Text)
     3. select the Linked Service you made in previous step
     4. choose the file you uploaded in the storage account and enable first row as header
     
-You now have your input dataset.
+You know have your input dataset.
 
 ### C. Create and run pipeline & dataflow
 9. Go on the "Author" tab on the left of the screen and create a new Pipeline
