@@ -127,9 +127,6 @@ Column Pattern 2 - Each column that matches ```type=='string'```
    
 Add another ```Sink``` as a last step to this branch, and write the data to a ```New Dataset``` (also a CSV file) in the same Data Lake.
 
-### E. Visualize your Data Profile in Power BI
-
-   
 
 
 
