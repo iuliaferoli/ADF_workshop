@@ -59,7 +59,9 @@ You now have your input dataset.
 2. Create a "Data Flow" activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
 3. Choose "Create new data flow" in the UI pop-up; and select Mapping Data Flow
 
+
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataflow.png?raw=true)
+
 
 
 ### C.2 Create data flow
@@ -87,7 +89,10 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 * **create a new dataset** with properties: 
 * data lake gen 2, csv, same linked service as before that connects to the **output container** you created in section A. 
 
+
+
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/dataflow.PNG?raw=true)
+
 
 
 ### C.3 Publish & Run
@@ -95,18 +100,31 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 1. Select ```Publish All``` to commit all the changes you made, 
 2. Run your pipeline by selecting ```Trigger Now```
 
+
+
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/triggernow.png?raw=true)
+ 
+ 
+
     
 ### D. Create a Data Profile with Statistics
 1. Create a  ```New Branch``` from the last step in the data flow you made before the sink
 2. Add an `Derived Column` step to convert the Year column to integer (to get the best of the statistics analysis later)
 3. Add an ```Aggregate``` step. Within the settings,
 
+
+
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/secondbranch.PNG?raw=true)
+
+
 
 4. Select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
 
+
+
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/summarystatistics.png?raw=true)
+
+
 
 You can also copy the values from here:
 
