@@ -41,7 +41,6 @@ D. Write your transformed data back to your data lake
 
 ## B. Connect to the data
 
-![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createinadf.png?raw=true)
 
 1. From the `Manage` tab, create a linked service to connect to the data lake you deployed [(see documentation)](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
     * Data store type will be Data Lake Gen 2 (as the storage account you made)
