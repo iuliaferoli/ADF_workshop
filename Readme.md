@@ -171,6 +171,10 @@ Third Column Pattern - Each column that matches `type=='string'`
 
 
 
+### Bonus Tasks
 
+* Explore and transform the dataset using a Wrangling Data Flow
+
+* Visualize your Data Profile using Power BI
 
 
