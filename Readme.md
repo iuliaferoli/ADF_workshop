@@ -102,7 +102,7 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 2. Ass an `Derived Column` step to convert the Year column to integer (to get the best of the statistics analysis later)
 3. Add an ```Aggregate``` step. Within the settings,
 
-![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/second.PNG?raw=true)
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/secondbranch.PNG?raw=true)
 
 4. Select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
 
