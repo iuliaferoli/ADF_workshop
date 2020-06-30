@@ -171,6 +171,12 @@ Third Column Pattern - Each column that matches `type=='string'`
 
 
 
+
+**Congratulations!** You've finished this hands-on Azure Data Factory lab. If you're done but just not done yet, you can find more labs [here](https://github.com/kromerm/adflab) 
+
+
+
+
 ### Bonus Tasks
 
 * Explore and transform the dataset using a Wrangling Data Flow
