@@ -86,15 +86,17 @@ Create the following transformatins:
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/summarystatistics.png?raw=true)
 
-You can also copy the values from here which is a bit easier - Each column that matches ```true()```
+You can also copy the values from here which is a bit easier.
+
+Column Pattern 1 - Each column that matches ```true()```
+With the following columns and expressions below:
 
   | Column  | Expression |
   | ------------- | ------------- |
   | $$+'-NotNull'  | countIf(!isNull($$))  |
   | $$+'-Null'   | countIf(isNull($$)) | 
 
-   Add another column pattern below that matches: ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
-   And create the following columns with corresponding expressions:
+Column Pattern 2 - Each column that matches ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
 
   | Column  | Expression |
    | ------------- | ------------- |
@@ -104,8 +106,7 @@ You can also copy the values from here which is a bit easier - Each column that 
    | $$+'-average'   | round(avg($$),2) |    
    | $$+'-variance'   | round(variance($$),2) |
     
-And another column pattern that matches: ```type=='string'```
-With the following columns and expressions:
+Column Pattern 2 - Each column that matches ```type=='string'```
       
   | Column  | Expression |
    | ------------- | ------------- |
