@@ -74,13 +74,16 @@ From this Data Flow screen you can now create extra steps with the ```+``` butto
 ![](add the link to the trigger now image here)
     
 ### D. Create a Data Profile with Statistics
-1. Create a branch from the last step in the data flow you made before the sink, and select the Aggregate transformation. Select the Aggregate option instead of Group By, and then add a column pattern below from the + button. Fill in the empty fields as shown below:
-Each column that matches ```true()```
+1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add a ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows:
 
-   | Column  | Expression |
-    | ------------- | ------------- |
-    | $$+'-NotNull'  | countIf(!isNull($$))  |
-    | $$+'-Null'   | countIf(isNull($$)) | 
+![](add picture here)
+
+You can also copy the values from here - Each column that matches ```true()```
+
+  | Column  | Expression |
+  | ------------- | ------------- |
+  | $$+'-NotNull'  | countIf(!isNull($$))  |
+  | $$+'-Null'   | countIf(isNull($$)) | 
 
 ![](need to create image for this one)
 
