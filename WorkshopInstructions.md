@@ -21,16 +21,25 @@ D. Write your transformed data back to your data lake
 
 ### A.1 Create and populate data lake
 
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createstorage.PNG?raw=true)
+
 1. Create a data lake (storage account with hierarchical namespace enabled) [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)
 2. Create two containers: `input` and `output` (where you will later write to through an ADF pipeline) [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-blob-container)
 3. Download the rotten tomatoes dataset from [kaggle](https://www.kaggle.com/ayushkalla1/rotten-tomatoes-movie-database/data?select=all_movie.csv)
 4. Unzip the csv and upload it to the input folder of the data lake (with an easy name)
     
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createcontainers.png?raw=true)    
+    
 ### A.2 Create Azure Data Factory instance in the same resource group
 1. Create an ADF instance [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
 2. Open the ADF Author & Monitor page.
 
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createadf.PNG?raw=true)
+
 ### B. Connect to the data
+
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataset.PNG?raw=true)
+
 3. From the `Manage` tab, create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
     1. Data store type will be Data Lake Gen 2 (as the storage account you made)
     2. Select your subscription and storage account
@@ -43,10 +52,15 @@ D. Write your transformed data back to your data lake
 You know have your input dataset.
 
 ### C. Create and run pipeline & dataflow
+
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createinadf.png?raw=true)
+
 9. Go on the "Author" tab on the left of the screen and create a new Pipeline
 10. Create a Data Flow activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
 11. Choose create new data flow in the UI pop-up; and select Mapping Data Flow
 12. Select the dataset you created in the previous section as input.
+
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataflow.png?raw=true)
 
 From this Data Flow screen you can now create extra steps with the ```+``` button at the bottom right of each activity shape. The overview of possible transformations is found [here](https://docs.microsoft.com/en-us/azure/data-factory/data-flow-transformation-overview)
 
