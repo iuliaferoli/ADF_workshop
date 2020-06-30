@@ -28,8 +28,8 @@ D. Write your transformed data back to your data lake
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createcontainers.png?raw=true)    
 
-3. Download the rotten tomatoes dataset from [kaggle](https://www.kaggle.com/ayushkalla1/rotten-tomatoes-movie-database/data?select=all_movie.csv)
-4. Unzip the csv and upload it to the input folder of the data lake (with an easy name)
+3. Download the rotten tomatoes dataset from [the repository](https://github.com/iuliaferoli/ADF_workshop/blob/master/data/all_movie.csv)
+4. Upload it to the `input` folder of the data lake (with an easy name)
     
 ### A.2 Create Azure Data Factory instance in the same resource group
 1. Create an ADF instance [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
@@ -59,18 +59,28 @@ You know have your input dataset.
 9. Go on the "Author" tab on the left of the screen and create a new Pipeline
 10. Create a Data Flow activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
 
-![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataflow.png?raw=true)
+
 
 11. Choose create new data flow in the UI pop-up; and select Mapping Data Flow
-12. Select the dataset you created in the previous section as input.
+12. Click on `Add Source` step at the beginning of the data flow.
+* Name it
+* Select Dataset as Source type
+* Choose the dataset you created in B
 
-From this Data Flow screen you can now create extra steps with the ```+``` button at the bottom right of each activity shape. The overview of possible transformations is found [here](https://docs.microsoft.com/en-us/azure/data-factory/data-flow-transformation-overview)
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataflow.png?raw=true)
 
-13. Follow the instructions from Task 3 in this [tutorial](https://github.com/microsoft/ignite-learning-paths-training-data/tree/main/data30/demos#task-3-using-mapping-data-flow-transformation) to create a couple of data transformations. You don't have to complete all of them. 
-    
-14. Add a ```sink``` at the end of your data flow, and within the settings **add a new .CSV dataset** that connects to the **output container** you created in section A. 
+Create new steps in the data flow by clicking on the `+` at the bottom right of each step.
+Create the following transformatins:
+1. `Select` step to drop the `Rating` column and rename `Rotton Tomato` to `Rotten Tomato`
+2. `Filter` step to only keep movies released after 1950. In the Filter box use the formula ` toInteger(year) > 1950`
+3. `Derived column` step to split the current `genres` column to only the first named genre. 
+    * Give the new derived column a name like `PrimaryGenre` and use this formula `iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)`
 
-15. Select ```Publish All``` to commit all the changes you made, and then run your pipeline by selecting ```Trigger Now```
+4. `Sink` step at the end of your data flow, and within the settings **create a new dataset** (data lake gen 2, csv, same linked service as before) that connects to the **output container** you created in section A. 
+
+5. Select ```Publish All``` to commit all the changes you made, 
+6. Run your pipeline by selecting ```Trigger Now```
+
 ![](add the link to the trigger now image here)
     
 ### D. Create a Data Profile with Statistics
