@@ -37,6 +37,8 @@ D. Write your transformed data back to your data lake
 
 2. Open the ADF Author & Monitor page.
 
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/authormonitor.png?raw=true)
+
 ## B. Connect to the data
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createinadf.png?raw=true)
@@ -51,6 +53,8 @@ D. Write your transformed data back to your data lake
     * choose the file you uploaded in the storage account and enable first row as header
     
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataset.PNG?raw=true)
+
+
 You now have your input dataset.
 
 ### C.1 Create pipeline
