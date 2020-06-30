@@ -95,7 +95,13 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/triggernow.png?raw=true)
     
 ### D. Create a Data Profile with Statistics
-1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add an ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
+1. Create a  ```New Branch``` from the last step in the data flow you made before the sink
+2. Ass an `Derived Column` step to convert the Year column to integer (to get the best of the statistics analysis later)
+3. Add an ```Aggregate``` step. Within the settings,
+
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/second.PNG?raw=true)
+
+4. Select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/summarystatistics.png?raw=true)
 
@@ -124,8 +130,11 @@ Column Pattern 2 - Each column that matches ```type=='string'```
   | Column  | Expression |
    | ------------- | ------------- |
    | $$+'-MaxLength'  | max(length($$))  |
-   
-Add another ```Sink``` as a last step to this branch, and write the data to a ```New Dataset``` (also a CSV file) in the same Data Lake.
+
+
+* If you have the data flow degub enabled you can directly see the generated statistics under `Data preview`   
+
+5. Add another ```Sink``` as a last step to this branch, and write the data to a ```New Dataset``` (also a CSV file) in the same Data Lake.
 
 
 
