@@ -5,7 +5,7 @@
 
 
 * You can create the following resources in your sandbox resource group.
-* Deploy everything in the same region, that is also closest to you geographically (example: westerneurope)
+* Deploy everything in the same region, that is also closest to you geographically (for example: West Europe)
 * Recommended to add your initials or another distinctive element to the naming of your resources if multiple people use the same resource group
 
 ## Tasks Summary
@@ -20,18 +20,18 @@ D. Write your transformed data back to your data lake
 
 ## A.1 Create and populate data lake
 
-1. Create a data lake (storage account with hierarchical namespace enabled) [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)
+1. Create a data lake (storage account with hierarchical namespace enabled) [(see documentation)](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createstorage.PNG?raw=true)
 
-2. Create two containers: `input` and `output` (where you will later write to through an ADF pipeline) [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-blob-container)
+2. Create two containers: `input` and `output` (where you will later write to through an ADF pipeline) [(see documentation)](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-blob-container)
 3. Download the rotten tomatoes dataset from [the data folder](https://github.com/iuliaferoli/ADF_workshop/blob/master/data/all_movie.csv)
 4. Upload it to the `input` folder of the data lake (with an easy name)
     
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createcontainers.png?raw=true)  
 
 ## A.2 Create Azure Data Factory instance in the same resource group
-1. Create an ADF instance. ([documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory))
+1. Create an ADF instance. ([(see documentation)](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory))
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createadf.PNG?raw=true)
 
@@ -43,7 +43,7 @@ D. Write your transformed data back to your data lake
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createinadf.png?raw=true)
 
-1. From the `Manage` tab, create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
+1. From the `Manage` tab, create a linked service to connect to the data lake you deployed [(see documentation)](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
     * Data store type will be Data Lake Gen 2 (as the storage account you made)
     * Select your subscription and storage account
     
