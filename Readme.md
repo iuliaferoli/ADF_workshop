@@ -46,14 +46,17 @@ D. Write your transformed data back to your data lake
 1. From the `Manage` tab, create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
     * Data store type will be Data Lake Gen 2 (as the storage account you made)
     * Select your subscription and storage account
+    
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/linkedservice.png?raw=true)
+
+
 2. From the `Author` tab create a dataset, 
     * Data store type will be Data Lake Gen 2 (as the storage account you made)
     * format will be CSV (Delimited Text)
     * select the Linked Service you made in previous step
     * choose the file you uploaded in the storage account and enable first row as header
-    
-![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataset.PNG?raw=true)
 
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/Dataset.png?raw=true)
 
 You now have your input dataset.
 
