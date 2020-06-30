@@ -87,6 +87,9 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 * **create a new dataset** with properties: 
 * data lake gen 2, csv, same linked service as before that connects to the **output container** you created in section A. 
 
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/dataflow.PNG?raw=true)
+
+
 ### C.3 Publish & Run
 
 1. Select ```Publish All``` to commit all the changes you made, 
