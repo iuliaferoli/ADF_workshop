@@ -21,26 +21,64 @@ D. Write your transformed data back to your data lake
 4. Upload the csv to the input folder of the data lake (with an easy name)
     
 ### A.2 Create Azure Data Factory instance in the same resource group
-1. Create an ADF instance [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-2. Open the ADF Author & Monitor page and go into the "Author" tab (pencil on the left of the page)
+5. Create an ADF instance [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
+6. Open the ADF Author & Monitor page and go into the "Author" tab (pencil on the left of the page)
 
 ### B. Connect to the data
-3. Create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
-4. Create a dataset, 
+7. Create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
+8. Create a dataset, 
     1. type will be Data Lake Gen 2 (as the storage account you made)
     2. format will be CSV (Delimited Text)
     3. select the Linked Service you made in previous step
     4. choose the file you uploaded in the storage account and enable first row as header
     
-You know have your input dataset.
+You now have your input dataset.
 
-### C. Create & run pipeline
-5. Go on the "Author" tab on the left of the screen and create a new Pipeline
-6. Create a Data Flow activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
-7. Choose create new data flow in the UI pop-up; and select Mapping Data Flow
-8. Select the dataset you created in the previous section as input.
+### C. Create and run pipeline & dataflow
+9. Go on the "Author" tab on the left of the screen and create a new Pipeline
+10. Create a Data Flow activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
+11. Choose create new data flow in the UI pop-up; and select Mapping Data Flow
+12. Select the dataset you created in the previous section as input.
 
-From this Data Flow screen you can now create extra steps with the + sign at the bottom right of each activity shape. The overview of possible transformations is found [here](https://docs.microsoft.com/en-us/azure/data-factory/data-flow-transformation-overview)
+From this Data Flow screen you can now create extra steps with the ```+``` button at the bottom right of each activity shape. The overview of possible transformations is found [here](https://docs.microsoft.com/en-us/azure/data-factory/data-flow-transformation-overview)
 
-9. For this lab we want to create at last 3 different transformations of your choice to fully explore the service and for an extra challenge. 
-    * However, if you prefer to follow specific steps you can also recreate these steps from the [tutorial here](https://github.com/microsoft/ignite-learning-paths-training-data/tree/main/data30/demos#exercise-1-transforming-data-with-mapping-data-flow) 
+13. Follow the instructions from Task 3 in this [tutorial](https://github.com/microsoft/ignite-learning-paths-training-data/tree/main/data30/demos#exercise-1-transforming-data-with-mapping-data-flow) to create a couple of data transformations. You don't have to complete all of them. 
+    
+14. Add a ```sink``` at the end of your data flow, and within the settings **add a new .CSV dataset** that connects to the **output container** you created in section A. 
+
+15. Select ```Publish All``` to commit all the changes you made, and then run your pipeline by selecting ```Trigger Now```
+![](add the link to the trigger now image here)
+    
+### D. Create a Data Profile with Statistics
+1. Create a branch from the last step in the data flow you made before the sink, and select the Aggregate transformation. Select the Aggregate option instead of Group By, and then add a column pattern below from the + button. Fill in the empty fields as shown below:
+Each column that matches ```true()```
+
+   | Column  | Expression |
+    | ------------- | ------------- |
+    | $$+'-NotNull'  | countIf(!isNull($$))  |
+    | $$+'-Null'   | countIf(isNull($$)) | 
+
+![](need to create image for this one)
+
+   Add another column pattern below that matches: ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
+   And create the following columns with corresponding expressions:
+
+  | Column  | Expression |
+   | ------------- | ------------- |
+   | $$+'-stddev'  | round(stddev($$),2)  |
+   | $$+'-min'   | min($$) | 
+   | $$+'-max'   | max($$) |
+   | $$+'-average'   | round(avg($$),2) |    
+   | $$+'-variance'   | round(variance($$),2) |
+    
+And another column pattern that matches: ```type=='string'```
+With the following columns and expressions:
+      
+  | Column  | Expression |
+   | ------------- | ------------- |
+   | $$+'-MaxLength'  | max(length($$))  |
+   
+![](show one image with all of them)
+
+
+
