@@ -10,7 +10,7 @@
 
 ## Tasks Summary
 
-A. Set up Azure environemnt
+A. Set up Azure environment
 
 B. Connect to your data source
 
@@ -108,9 +108,9 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/summarystatistics.png?raw=true)
 
-You can also copy the values from here which is a bit easier.
+You can also copy the values from here:
 
-Column Pattern 1 - Each column that matches ```true()```
+First Column Pattern - Each column that matches ```true()```
 With the following columns and expressions below:
 
   | Column  | Expression |
@@ -118,7 +118,7 @@ With the following columns and expressions below:
   | $$+'-NotNull'  | countIf(!isNull($$))  |
   | $$+'-Null'   | countIf(isNull($$)) | 
 
-Column Pattern 2 - Each column that matches ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
+Second Column Pattern - Each column that matches ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
 
   | Column  | Expression |
    | ------------- | ------------- |
@@ -128,14 +128,14 @@ Column Pattern 2 - Each column that matches ```type=='double'||type=='integer'||
    | $$+'-average'   | round(avg($$),2) |    
    | $$+'-variance'   | round(variance($$),2) |
     
-Column Pattern 2 - Each column that matches ```type=='string'```
+Third Column Pattern - Each column that matches ```type=='string'```
       
   | Column  | Expression |
    | ------------- | ------------- |
    | $$+'-MaxLength'  | max(length($$))  |
 
 
-* If you have the data flow degub enabled you can directly see the generated statistics under `Data preview`   
+* If you have the data flow debug enabled you can directly see the generated statistics under `Data preview`   
 
 5. Add another ```Sink``` as a last step to this branch, and write the data to a ```New Dataset``` (also a CSV file) in the same Data Lake.
 
