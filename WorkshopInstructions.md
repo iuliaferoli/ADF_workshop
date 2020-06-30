@@ -3,6 +3,8 @@
 ## ADF introduction & data quality lab.
 ## Lab 1
 
+iulia
+
 * You can create the following resources in your sandbox resource group.
 * Deploy everything in the same region, that is also closest to you geographically (example: westerneurope)
 * Recommended to add your initials or another distinctive element to the naming of your resources if multiple people use the same resource group
