@@ -28,7 +28,7 @@ D. Write your transformed data back to your data lake
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createcontainers.png?raw=true)    
 
-3. Download the rotten tomatoes dataset from [the repository](https://github.com/iuliaferoli/ADF_workshop/blob/master/data/all_movie.csv)
+3. Download the rotten tomatoes dataset from [the data folder](https://github.com/iuliaferoli/ADF_workshop/blob/master/data/all_movie.csv)
 4. Upload it to the `input` folder of the data lake (with an easy name)
     
 ### A.2 Create Azure Data Factory instance in the same resource group
@@ -42,14 +42,14 @@ D. Write your transformed data back to your data lake
 
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createinadf.png?raw=true)
 
-3. From the `Manage` tab, create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
-    1. Data store type will be Data Lake Gen 2 (as the storage account you made)
-    2. Select your subscription and storage account
-4. From the `Author` tab create a dataset, 
-    1. Data store type will be Data Lake Gen 2 (as the storage account you made)
-    2. format will be CSV (Delimited Text)
-    3. select the Linked Service you made in previous step
-    4. choose the file you uploaded in the storage account and enable first row as header
+1. From the `Manage` tab, create a linked service to connect to the data lake you deployed [documentation](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)
+    * Data store type will be Data Lake Gen 2 (as the storage account you made)
+    * Select your subscription and storage account
+2. From the `Author` tab create a dataset, 
+    * Data store type will be Data Lake Gen 2 (as the storage account you made)
+    * format will be CSV (Delimited Text)
+    * select the Linked Service you made in previous step
+    * choose the file you uploaded in the storage account and enable first row as header
     
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataset.PNG?raw=true)
 You know have your input dataset.
