@@ -1,4 +1,5 @@
-# Workshop Day 
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/banner.png?raw=true)
+
 ## ADF introduction & data quality lab.
 ## Lab 1
 
