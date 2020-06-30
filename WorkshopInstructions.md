@@ -52,14 +52,12 @@ D. Write your transformed data back to your data lake
     * choose the file you uploaded in the storage account and enable first row as header
     
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/createdataset.PNG?raw=true)
-You know have your input dataset.
+You now have your input dataset.
 
 ### C. Create and run pipeline & dataflow
 
 9. Go on the "Author" tab on the left of the screen and create a new Pipeline
 10. Create a Data Flow activity in the pipline by selecting it from under "Data Transformation" (or searching for it) and dragging it onto the middle screen.
-
-
 
 11. Choose create new data flow in the UI pop-up; and select Mapping Data Flow
 12. Click on `Add Source` step at the beginning of the data flow.
@@ -81,21 +79,19 @@ Create the following transformatins:
 5. Select ```Publish All``` to commit all the changes you made, 
 6. Run your pipeline by selecting ```Trigger Now```
 
-![](add the link to the trigger now image here)
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/triggernow.png?raw=true)
     
 ### D. Create a Data Profile with Statistics
-1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add a ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows:
+1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add a ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
 
-![](add picture here)
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/summarystatistics.png?raw=true)
 
-You can also copy the values from here - Each column that matches ```true()```
+You can also copy the values from here which is a bit easier - Each column that matches ```true()```
 
   | Column  | Expression |
   | ------------- | ------------- |
   | $$+'-NotNull'  | countIf(!isNull($$))  |
   | $$+'-Null'   | countIf(isNull($$)) | 
-
-![](need to create image for this one)
 
    Add another column pattern below that matches: ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
    And create the following columns with corresponding expressions:
@@ -115,7 +111,7 @@ With the following columns and expressions:
    | ------------- | ------------- |
    | $$+'-MaxLength'  | max(length($$))  |
    
-![](show one image with all of them)
+
 
 
 
