@@ -170,11 +170,11 @@ Third Column Pattern - Each column that matches `type=='string'`
 5. Add another `Sink` as a last step to this branch, and write the data to a `New Dataset` (also a CSV file) in the same Data Lake.
 
 
-
+______________________________________________________________________________________________________________________________________
 
 **Congratulations!** You've finished this hands-on Azure Data Factory lab. If you're done but just not done yet, you can find more labs [here](https://github.com/kromerm/adflab) 
 
-
+______________________________________________________________________________________________________________________________________
 
 
 ### Bonus Tasks
