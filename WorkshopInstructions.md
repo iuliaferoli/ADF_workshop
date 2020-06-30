@@ -92,24 +92,24 @@ iif(locate('|',genres)>1,left(genres,locate('|',genres)-1),genres)
 1. Select ```Publish All``` to commit all the changes you made, 
 2. Run your pipeline by selecting ```Trigger Now```
 
-![](add the link to the trigger now image here)
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/triggernow.png?raw=true)
     
 ### D. Create a Data Profile with Statistics
-1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add a ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows:
+1. Create a  ```New Branch``` from the last step in the data flow you made before the sink, and then add an ```Aggregate``` step. Within the settings, select the ```Aggregates``` option instead of Group By, press the ```+``` button and then ```Add Column Pattern```. Fill in the remaining fields as follows for three column patterns in total:
 
-![](add picture here)
+![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/summarystatistics.png?raw=true)
 
-You can also copy the values from here - Each column that matches ```true()```
+You can also copy the values from here which is a bit easier.
+
+Column Pattern 1 - Each column that matches ```true()```
+With the following columns and expressions below:
 
   | Column  | Expression |
   | ------------- | ------------- |
   | $$+'-NotNull'  | countIf(!isNull($$))  |
   | $$+'-Null'   | countIf(isNull($$)) | 
 
-![](need to create image for this one)
-
-   Add another column pattern below that matches: ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
-   And create the following columns with corresponding expressions:
+Column Pattern 2 - Each column that matches ```type=='double'||type=='integer'||type=='short'||type=='decimal'```
 
   | Column  | Expression |
    | ------------- | ------------- |
@@ -119,14 +119,18 @@ You can also copy the values from here - Each column that matches ```true()```
    | $$+'-average'   | round(avg($$),2) |    
    | $$+'-variance'   | round(variance($$),2) |
     
-And another column pattern that matches: ```type=='string'```
-With the following columns and expressions:
+Column Pattern 2 - Each column that matches ```type=='string'```
       
   | Column  | Expression |
    | ------------- | ------------- |
    | $$+'-MaxLength'  | max(length($$))  |
    
-![](show one image with all of them)
+Add another ```Sink``` as a last step to this branch, and write the data to a ```New Dataset``` (also a CSV file) in the same Data Lake.
+
+### E. Visualize your Data Profile in Power BI
+
+   
+
 
 
 
