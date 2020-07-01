@@ -181,5 +181,11 @@ ________________________________________________________________________________
 * Explore and transform the dataset using a Wrangling Data Flow
 
 * Visualize your Data Profile using Power BI
+______________________________________________________________________________________________________________________________________
 
+
+### References
+For the C Data Flow part, built upon [this Ignite lab.](https://github.com/microsoft/ignite-learning-paths-training-data/tree/main/data30/demos)
+
+For the D Profiles and statistics page, build upon [Mark Kromer's blog.](https://techcommunity.microsoft.com/t5/azure-data-factory/how-to-save-your-data-profiler-summary-stats-in-adf-data-flows/ba-p/1243251)
 
