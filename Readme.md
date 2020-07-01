@@ -1,8 +1,6 @@
 ![](https://github.com/iuliaferoli/ADF_workshop/blob/master/img/banner.png?raw=true)
 
 ## ADF introduction & data quality lab.
-## Lab 1
-
 
 * You can create the following resources in your sandbox resource group.
 * Deploy everything in the same region, that is also closest to you geographically (for example: West Europe)
